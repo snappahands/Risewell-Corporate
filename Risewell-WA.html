@@ -81,6 +81,11 @@
     .browser-bar { background: #f3f4f6; padding: 10px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #e5e7eb; }
     .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
     .browser-url { background: white; border: 1px solid #e5e7eb; border-radius: 6px; padding: 4px 12px; font-size: 12px; color: #6b7280; flex: 1; margin-left: 8px; }
+    /* Vivint product toggle buttons (slide 3 — Customize) */
+    .vivint-toggle-btn { font-size: 11px; font-weight: 600; padding: 5px 11px; border-radius: 999px; border: 1px solid #003B5C; background: #003B5C; color: #fff; cursor: pointer; transition: all 0.15s ease; letter-spacing: 0.02em; white-space: nowrap; }
+    .vivint-toggle-btn:hover { opacity: 0.85; }
+    .vivint-toggle-btn.is-off { background: rgba(232,119,34,0.10); color: #E87722; border-color: rgba(232,119,34,0.45); }
+    [data-vivint-row].is-off .text-gray-500 { color: #b5bcc4 !important; text-decoration: line-through; }
   </style>
 </head>
 <body class="bg-white text-navy-900 overflow-hidden">
@@ -102,7 +107,7 @@
   <!-- Fireworks canvas overlay -->
   <canvas id="fireworksCanvas" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
 
-  <div class="version-badge" onclick="this.style.display='none'" title="Click to hide">v41.5</div>
+  <div class="version-badge" onclick="this.style.display='none'" title="Click to hide">v42.0-WA</div>
 
   <!-- Progress bar -->
   <div class="fixed top-0 left-0 w-full h-1 bg-navy-100 z-50">
@@ -128,8 +133,147 @@
     </div>
   </div>
 
-  <!-- ==================== SLIDE 2: WHAT YOU HAVE TODAY ==================== -->
+  <!-- ==================== SLIDE 2: THE BOTTOM LINE ==================== -->
   <div class="slide" data-slide="2">
+    <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
+      <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-6">The Bottom Line</p>
+      <h2 class="text-4xl md:text-6xl font-bold mb-12 text-navy-700">More product. Less cost.</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full mb-10">
+        <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm cost-current">
+          <p class="text-orange-400 font-bold text-sm tracking-widest uppercase mb-6">Today</p>
+          <div class="space-y-3 text-left">
+            <div class="flex justify-between text-base"><span class="text-gray-500">Ring Pro2 Doorbell</span><span class="text-orange-400 font-semibold">$275</span></div>
+            <div class="flex justify-between text-base"><span class="text-gray-500">Kwikset 939 Lock</span><span class="text-orange-400 font-semibold">$200</span></div>
+            <div class="flex justify-between text-base"><span class="text-gray-500">Honeywell T6 Thermostat</span><span class="text-orange-400 font-semibold">$115</span></div>
+            <hr class="border-gray-200 my-3">
+            <div class="flex justify-between text-2xl"><span class="text-navy-700 font-bold">Total</span><span class="text-orange-400 font-bold">$590 / home</span></div>
+            <p class="text-gray-400 text-xs mt-2">No hub, no app, no installation, no security</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-8 border border-navy-200 shadow-sm cost-new">
+          <p class="text-navy-700 font-bold text-sm tracking-widest uppercase mb-6">Deako + Vivint</p>
+          <div class="space-y-3 text-left">
+            <div class="flex justify-between text-base"><span class="text-gray-500">Vivint Doorbell Camera + Chime</span><span class="text-green-600 font-semibold">included</span></div>
+            <div class="flex justify-between text-base"><span class="text-gray-500">Vivint Smart Lock</span><span class="text-green-600 font-semibold">included</span></div>
+            <div class="flex justify-between text-base"><span class="text-gray-500">Vivint Thermostat</span><span class="text-green-600 font-semibold">included</span></div>
+            <div class="flex justify-between text-base"><span class="text-gray-500">Vivint App</span><span class="text-green-600 font-semibold">included</span></div>
+            <div class="flex justify-between text-base"><span class="text-gray-500">White Glove Installation</span><span class="text-green-600 font-semibold">included</span></div>
+            <hr class="border-gray-200 my-3">
+            <div class="flex justify-between text-2xl"><span class="text-navy-700 font-bold">Total</span><span class="text-navy-700 font-bold">$340 / home</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="savings-highlight rounded-2xl px-10 py-6 max-w-2xl">
+        <p class="text-4xl font-black gradient-text">Save $250 per home</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 3: BOTTOM LINE — CUSTOMIZE ==================== -->
+  <div class="slide" data-slide="3">
+    <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
+      <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-6">Customize Your Package</p>
+      <h2 class="text-4xl md:text-6xl font-bold mb-10 text-navy-700">Tap to add or remove products.</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full mb-10">
+        <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm cost-current">
+          <p class="text-orange-400 font-bold text-sm tracking-widest uppercase mb-6">Today</p>
+          <div class="space-y-3 text-left">
+            <div class="flex justify-between text-base"><span class="text-gray-500">Ring Pro2 Doorbell</span><span class="text-orange-400 font-semibold">$275</span></div>
+            <div class="flex justify-between text-base"><span class="text-gray-500">Kwikset 939 Lock</span><span class="text-orange-400 font-semibold">$200</span></div>
+            <div class="flex justify-between text-base"><span class="text-gray-500">Honeywell T6 Thermostat</span><span class="text-orange-400 font-semibold">$115</span></div>
+            <hr class="border-gray-200 my-3">
+            <div class="flex justify-between text-2xl"><span class="text-navy-700 font-bold">Total</span><span class="text-orange-400 font-bold">$590 / home</span></div>
+            <p class="text-gray-400 text-xs mt-2">No hub, no app, no installation, no security</p>
+          </div>
+        </div>
+        <div class="bg-white rounded-2xl p-8 border border-navy-200 shadow-sm cost-new">
+          <p class="text-navy-700 font-bold text-sm tracking-widest uppercase mb-6">Deako + Vivint</p>
+          <div class="space-y-3 text-left" id="vivintToggleRows">
+            <div class="flex items-center justify-between gap-3" data-vivint-row data-product="deako5" data-price="274.97">
+              <span class="text-gray-500 text-sm">Deako 5-pack Smart Switches</span>
+              <button type="button" class="vivint-toggle-btn" onclick="toggleVivint('deako5')">Remove · $274.97</button>
+            </div>
+            <div class="flex items-center justify-between gap-3" data-vivint-row data-product="doorbell" data-price="150">
+              <span class="text-gray-500 text-sm">Vivint Doorbell Camera + Chime</span>
+              <button type="button" class="vivint-toggle-btn" onclick="toggleVivint('doorbell')">Remove · $150</button>
+            </div>
+            <div class="flex items-center justify-between gap-3" data-vivint-row data-product="lock" data-price="110">
+              <span class="text-gray-500 text-sm">Vivint Smart Lock</span>
+              <button type="button" class="vivint-toggle-btn" onclick="toggleVivint('lock')">Remove · $110</button>
+            </div>
+            <div class="flex items-center justify-between gap-3" data-vivint-row data-product="thermo" data-price="115">
+              <span class="text-gray-500 text-sm">Vivint Thermostat</span>
+              <button type="button" class="vivint-toggle-btn" onclick="toggleVivint('thermo')">Remove · $115</button>
+            </div>
+            <div class="flex justify-between text-base"><span class="text-gray-500">Vivint App</span><span class="text-green-600 font-semibold">included</span></div>
+            <div class="flex justify-between text-base"><span class="text-gray-500">White Glove Installation</span><span class="text-green-600 font-semibold">included</span></div>
+            <hr class="border-gray-200 my-3">
+            <div class="flex justify-between text-2xl"><span class="text-navy-700 font-bold">Total</span><span class="text-navy-700 font-bold" data-vivint-total>$649.97 / home</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="savings-highlight rounded-2xl px-10 py-6 max-w-2xl">
+        <p class="text-4xl font-black gradient-text" data-savings-headline>Adds $60 per home</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 4: AT SCALE — SCALE THE SAVINGS ==================== -->
+  <div class="slide" data-slide="4">
+    <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in bg-navy-700">
+      <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-6">At Scale</p>
+      <h2 class="text-4xl md:text-6xl font-bold mb-8 text-white">What <span data-per-home-title>$250</span>/home looks like<br>across your communities</h2>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-6xl mb-6 w-full">
+        <div class="bg-navy-800 rounded-2xl p-5 border border-navy-600 text-center">
+          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Twin Trails</p>
+          <p class="text-navy-400 text-xs mb-3">Issaquah</p>
+          <p class="text-sm text-navy-200 mb-1">38 homes</p>
+          <p class="text-2xl font-black text-orange-400" data-community-savings data-homes="38">$9,500</p>
+        </div>
+        <div class="bg-navy-800 rounded-2xl p-5 border border-navy-600 text-center">
+          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Liberty View</p>
+          <p class="text-navy-400 text-xs mb-3">Bothell</p>
+          <p class="text-sm text-navy-200 mb-1">23 homes</p>
+          <p class="text-2xl font-black text-orange-400" data-community-savings data-homes="23">$5,750</p>
+        </div>
+        <div class="bg-navy-800 rounded-2xl p-5 border border-navy-600 text-center">
+          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Cedar Estates</p>
+          <p class="text-navy-400 text-xs mb-3">Bonney Lake</p>
+          <p class="text-sm text-navy-200 mb-1">12 homes</p>
+          <p class="text-2xl font-black text-orange-400" data-community-savings data-homes="12">$3,000</p>
+        </div>
+        <div class="bg-navy-800 rounded-2xl p-5 border border-navy-600 text-center">
+          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Summit View</p>
+          <p class="text-navy-400 text-xs mb-3">Enumclaw</p>
+          <p class="text-sm text-navy-200 mb-1">22 homes</p>
+          <p class="text-2xl font-black text-orange-400" data-community-savings data-homes="22">$5,500</p>
+        </div>
+        <div class="bg-navy-800 rounded-2xl p-5 border border-orange-400/20 text-center">
+          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Pine Ranch</p>
+          <p class="text-navy-400 text-xs mb-3">Cle Elum</p>
+          <p class="text-sm text-navy-200 mb-1">1,300 homes</p>
+          <p class="text-2xl font-black text-orange-400" data-community-savings data-homes="1300">$325,000</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl w-full mb-6">
+        <div class="bg-navy-800 rounded-2xl p-6 border border-navy-600 text-center">
+          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Washington Total</p>
+          <p class="text-sm text-navy-200 mb-1">1,395 homes across 5 communities</p>
+          <p class="text-3xl font-black text-orange-400" data-wa-total data-homes="1395">$348,750</p>
+          <p class="text-navy-400 text-sm mt-1">in savings</p>
+        </div>
+        <div class="bg-gradient-to-b from-orange-400/20 to-navy-800 rounded-2xl p-6 border border-orange-400/30 text-center">
+          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Risewell National</p>
+          <p class="text-sm text-navy-200 mb-1">~4,000 homes/year</p>
+          <p class="text-3xl font-black text-orange-400" data-national-total data-homes="4000">$1.00M</p>
+          <p class="text-orange-400 text-sm mt-1 font-semibold">per year in savings</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 4: WHAT YOU HAVE TODAY ==================== -->
+  <div class="slide" data-slide="5">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
       <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-4">Today's Reality</p>
       <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight max-w-5xl text-navy-700">Five vendors. Five supply chains.<br><span class="text-orange-400">No one throat to choke.</span></h2>
@@ -179,7 +323,7 @@
   </div>
 
   <!-- ==================== SLIDE 3: THE PROBLEMS ==================== -->
-  <div class="slide" data-slide="3">
+  <div class="slide" data-slide="6">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
       <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-6">The Hidden Costs</p>
       <h2 class="text-4xl md:text-6xl font-bold mb-12 leading-tight max-w-5xl text-navy-700">Your homebuyer has<br><span class="text-orange-400">problems too</span></h2>
@@ -209,7 +353,7 @@
   </div>
 
   <!-- ==================== SLIDE 4: THE SOLUTION ==================== -->
-  <div class="slide" data-slide="4">
+  <div class="slide" data-slide="7">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in bg-navy-700">
       <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-6">The Solution</p>
       <h2 class="text-4xl md:text-7xl font-bold mb-10 leading-tight max-w-5xl text-white">One partner.<br>One platform.<br><span class="text-orange-400">One call.</span></h2>
@@ -221,7 +365,7 @@
   </div>
 
   <!-- ==================== SLIDE 5: THE PARTNERSHIP ==================== -->
-  <div class="slide" data-slide="5">
+  <div class="slide" data-slide="8">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
       <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-8">The Partnership</p>
       <!-- Logo lockup -->
@@ -272,7 +416,7 @@
   </div>
 
   <!-- ==================== SLIDE 6: THE DEAKO + VIVINT PACKAGE ==================== -->
-  <div class="slide" data-slide="6">
+  <div class="slide" data-slide="9">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
       <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-4">The Deako + Vivint Solution</p>
       <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight max-w-5xl text-navy-700">One app. One support line.<br>Professionally installed.</h2>
@@ -343,7 +487,7 @@
   </div>
 
   <!-- ==================== SLIDE 5: PRODUCT COMPARISON - DOORBELL ==================== -->
-  <div class="slide" data-slide="7">
+  <div class="slide" data-slide="10">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in py-6">
       <p class="text-navy-400 font-semibold text-sm tracking-widest uppercase mb-3">Side-by-Side Comparison</p>
       <h2 class="text-4xl md:text-5xl font-bold mb-6 text-navy-700">Doorbell Camera</h2>
@@ -383,7 +527,7 @@
   </div>
 
   <!-- ==================== SLIDE 6: PRODUCT COMPARISON - LOCK ==================== -->
-  <div class="slide" data-slide="8">
+  <div class="slide" data-slide="11">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
       <p class="text-navy-400 font-semibold text-sm tracking-widest uppercase mb-3">Side-by-Side Comparison</p>
       <h2 class="text-4xl md:text-5xl font-bold mb-6 text-navy-700">Smart Lock</h2>
@@ -423,7 +567,7 @@
   </div>
 
   <!-- ==================== SLIDE 7: PRODUCT COMPARISON - THERMOSTAT ==================== -->
-  <div class="slide" data-slide="9">
+  <div class="slide" data-slide="12">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
       <p class="text-navy-400 font-semibold text-sm tracking-widest uppercase mb-3">Side-by-Side Comparison</p>
       <h2 class="text-4xl md:text-5xl font-bold mb-6 text-navy-700">Smart Thermostat</h2>
@@ -462,98 +606,8 @@
     </div>
   </div>
 
-  <!-- ==================== SLIDE 9: THE SAVINGS ==================== -->
-  <div class="slide" data-slide="10">
-    <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
-      <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-6">The Bottom Line</p>
-      <h2 class="text-4xl md:text-6xl font-bold mb-12 text-navy-700">More product. Less cost.</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full mb-10">
-        <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm cost-current">
-          <p class="text-orange-400 font-bold text-sm tracking-widest uppercase mb-6">Today</p>
-          <div class="space-y-3 text-left">
-            <div class="flex justify-between text-base"><span class="text-gray-500">Ring Pro2 Doorbell</span><span class="text-orange-400 font-semibold">$275</span></div>
-            <div class="flex justify-between text-base"><span class="text-gray-500">Kwikset 939 Lock</span><span class="text-orange-400 font-semibold">$200</span></div>
-            <div class="flex justify-between text-base"><span class="text-gray-500">Honeywell T6 Thermostat</span><span class="text-orange-400 font-semibold">$115</span></div>
-            <hr class="border-gray-200 my-3">
-            <div class="flex justify-between text-2xl"><span class="text-navy-700 font-bold">Total</span><span class="text-orange-400 font-bold">$590 / home</span></div>
-            <p class="text-gray-400 text-xs mt-2">No hub, no app, no installation, no security</p>
-          </div>
-        </div>
-        <div class="bg-white rounded-2xl p-8 border border-navy-200 shadow-sm cost-new">
-          <p class="text-navy-700 font-bold text-sm tracking-widest uppercase mb-6">Deako + Vivint</p>
-          <div class="space-y-3 text-left">
-            <div class="flex justify-between text-base"><span class="text-gray-500">Vivint Doorbell Camera + Chime</span><span class="text-green-600 font-semibold">included</span></div>
-            <div class="flex justify-between text-base"><span class="text-gray-500">Vivint Smart Lock</span><span class="text-green-600 font-semibold">included</span></div>
-            <div class="flex justify-between text-base"><span class="text-gray-500">Vivint Thermostat</span><span class="text-green-600 font-semibold">included</span></div>
-            <div class="flex justify-between text-base"><span class="text-gray-500">Vivint App</span><span class="text-green-600 font-semibold">included</span></div>
-            <div class="flex justify-between text-base"><span class="text-gray-500">White Glove Installation</span><span class="text-green-600 font-semibold">included</span></div>
-            <hr class="border-gray-200 my-3">
-            <div class="flex justify-between text-2xl"><span class="text-navy-700 font-bold">Total</span><span class="text-navy-700 font-bold">$300 / home</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="savings-highlight rounded-2xl px-10 py-6 max-w-2xl">
-        <p class="text-4xl font-black gradient-text">Save $290 per home</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== SLIDE 10: SCALE THE SAVINGS ==================== -->
-  <div class="slide" data-slide="11">
-    <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in bg-navy-700">
-      <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-6">At Scale</p>
-      <h2 class="text-4xl md:text-6xl font-bold mb-8 text-white">What $290/home looks like<br>across your communities</h2>
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-6xl mb-6 w-full">
-        <div class="bg-navy-800 rounded-2xl p-5 border border-navy-600 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Twin Trails</p>
-          <p class="text-navy-400 text-xs mb-3">Issaquah</p>
-          <p class="text-sm text-navy-200 mb-1">38 homes</p>
-          <p class="text-2xl font-black text-orange-400">$11,020</p>
-        </div>
-        <div class="bg-navy-800 rounded-2xl p-5 border border-navy-600 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Liberty View</p>
-          <p class="text-navy-400 text-xs mb-3">Bothell</p>
-          <p class="text-sm text-navy-200 mb-1">23 homes</p>
-          <p class="text-2xl font-black text-orange-400">$6,670</p>
-        </div>
-        <div class="bg-navy-800 rounded-2xl p-5 border border-navy-600 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Cedar Estates</p>
-          <p class="text-navy-400 text-xs mb-3">Bonney Lake</p>
-          <p class="text-sm text-navy-200 mb-1">12 homes</p>
-          <p class="text-2xl font-black text-orange-400">$3,480</p>
-        </div>
-        <div class="bg-navy-800 rounded-2xl p-5 border border-navy-600 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Summit View</p>
-          <p class="text-navy-400 text-xs mb-3">Enumclaw</p>
-          <p class="text-sm text-navy-200 mb-1">22 homes</p>
-          <p class="text-2xl font-black text-orange-400">$6,380</p>
-        </div>
-        <div class="bg-navy-800 rounded-2xl p-5 border border-orange-400/20 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Pine Ranch</p>
-          <p class="text-navy-400 text-xs mb-3">Cle Elum</p>
-          <p class="text-sm text-navy-200 mb-1">1,300 homes</p>
-          <p class="text-2xl font-black text-orange-400">$377,000</p>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl w-full mb-6">
-        <div class="bg-navy-800 rounded-2xl p-6 border border-navy-600 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Washington Total</p>
-          <p class="text-sm text-navy-200 mb-1">1,395 homes across 5 communities</p>
-          <p class="text-3xl font-black text-orange-400">$404,550</p>
-          <p class="text-navy-400 text-sm mt-1">in savings</p>
-        </div>
-        <div class="bg-gradient-to-b from-orange-400/20 to-navy-800 rounded-2xl p-6 border border-orange-400/30 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Risewell National</p>
-          <p class="text-sm text-navy-200 mb-1">~4,000 homes/year</p>
-          <p class="text-3xl font-black text-orange-400">$1.16M</p>
-          <p class="text-orange-400 text-sm mt-1 font-semibold">per year in savings</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ==================== SLIDE 11: WHITE GLOVE EXPERIENCE ==================== -->
-  <div class="slide" data-slide="12">
+  <div class="slide" data-slide="13">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
       <p class="text-navy-400 font-semibold text-sm tracking-widest uppercase mb-6">The Homebuyer Experience</p>
       <h2 class="text-4xl md:text-6xl font-bold mb-12 text-navy-700">White glove from<br>close to connected</h2>
@@ -597,7 +651,7 @@
   </div>
 
   <!-- ==================== SLIDE 13: EXPANDABLE PLATFORM ==================== -->
-  <div class="slide" data-slide="13">
+  <div class="slide" data-slide="14">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
       <p class="text-navy-400 font-semibold text-sm tracking-widest uppercase mb-6">Expandable Platform</p>
       <h2 class="text-4xl md:text-6xl font-bold mb-10 text-navy-700">Grows with your homebuyers</h2>
@@ -656,7 +710,7 @@
   </div>
 
   <!-- ==================== SLIDE 15: MOCKUP - RISEWELL.COM/SMARTHOME ==================== -->
-  <div class="slide" data-slide="14">
+  <div class="slide" data-slide="15">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-6 fade-in">
       <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-4">Vision: What Your Homebuyers See</p>
       <h2 class="text-3xl md:text-4xl font-bold mb-6 text-navy-700">risewellhomes.com/smarthome</h2>
@@ -742,7 +796,7 @@
 
   <!-- ==================== SLIDE 17: NEXT STEPS ==================== -->
   <!-- ==================== SLIDE 16: WHY SWITCH - SUMMARY ==================== -->
-  <div class="slide" data-slide="15">
+  <div class="slide" data-slide="16">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in py-6">
       <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-3 mt-8">The Case for Change</p>
       <h2 class="text-4xl md:text-5xl font-bold mb-6 text-navy-700">Why make the switch?</h2>
@@ -776,7 +830,7 @@
   </div>
 
   <!-- ==================== SLIDE 16: THANK YOU ==================== -->
-  <div class="slide" data-slide="16">
+  <div class="slide" data-slide="17">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in bg-navy-700">
       <div style="background:white;border-radius:10px;padding:6px 20px;display:inline-flex;align-items:center;gap:12px;margin-bottom:2.5rem;">
         <img src="https://shop.deako.com/cdn/shop/files/Deako_2025_logo_500px_white.png?v=1743474883" alt="Deako" class="h-7" style="filter:invert(1);" onerror="this.style.display='none'">
@@ -894,11 +948,80 @@
       animate();
     }
     function _updateFireworksBtn() {
-      var show = (current === 15 || current === 16);
+      var show = (current === 16 || current === 17);
       var btn = document.getElementById('fireworksBtn');
       var sep = document.getElementById('fireworksSep');
       if (btn) btn.style.display = show ? 'flex' : 'none';
       if (sep) sep.style.display = show ? 'inline-block' : 'none';
+    }
+
+    // ===== Slide 3 + Slide 4 — Vivint product toggles → live recalc =====
+    // Each toggle adds its listed wholesale price to the Vivint-side total
+    // when ON, and removes it when OFF. Today side stays a fixed $590.
+    // Per-home savings = TODAY_FIXED − Vivint_total. When negative we say
+    // "Adds $X" instead of "Save $X". The result also drives the At Scale
+    // slide (community + WA + National figures) by simple per-home math.
+    const RISEWELL_TODAY_FIXED = 590;
+    function _fmtUSD(n) { return '$' + Math.round(n).toLocaleString(); }
+    function _scaleFmt(n) {
+      if (n >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
+      if (n >= 1e4) return '$' + Math.round(n / 1000).toLocaleString() + ',000';
+      return '$' + Math.round(n).toLocaleString();
+    }
+    function recalcVivint() {
+      let total = 0;
+      document.querySelectorAll('[data-vivint-row]').forEach(row => {
+        if (row.classList.contains('is-off')) return;
+        total += parseFloat(row.dataset.price) || 0;
+      });
+      // Vivint total line on slide 3
+      const totEl = document.querySelector('[data-vivint-total]');
+      if (totEl) totEl.textContent = _fmtUSD(total) + ' / home';
+      // Savings headline on slide 3 (positive = Save, negative = Adds)
+      const savings = RISEWELL_TODAY_FIXED - total;
+      const headline = document.querySelector('[data-savings-headline]');
+      if (headline) {
+        if (savings >= 0) headline.textContent = `Save ${_fmtUSD(savings)} per home`;
+        else headline.textContent = `Adds ${_fmtUSD(-savings)} per home`;
+      }
+      // Propagate to At Scale (slide 4) — only when savings positive; otherwise blank to $0
+      const perHome = Math.max(0, savings);
+      const titleEl = document.querySelector('[data-per-home-title]');
+      if (titleEl) titleEl.textContent = _fmtUSD(perHome);
+      document.querySelectorAll('[data-community-savings]').forEach(el => {
+        const homes = parseInt(el.dataset.homes, 10) || 0;
+        el.textContent = _scaleFmt(homes * perHome);
+      });
+      const waEl = document.querySelector('[data-wa-total]');
+      if (waEl) {
+        const homes = parseInt(waEl.dataset.homes, 10) || 0;
+        waEl.textContent = _scaleFmt(homes * perHome);
+      }
+      const natEl = document.querySelector('[data-national-total]');
+      if (natEl) {
+        const homes = parseInt(natEl.dataset.homes, 10) || 0;
+        natEl.textContent = _scaleFmt(homes * perHome);
+      }
+    }
+    window.toggleVivint = function (product) {
+      const row = document.querySelector(`[data-vivint-row][data-product="${product}"]`);
+      if (!row) return;
+      const willBeOff = !row.classList.contains('is-off');
+      row.classList.toggle('is-off', willBeOff);
+      const btn = row.querySelector('.vivint-toggle-btn');
+      if (btn) {
+        const price = parseFloat(row.dataset.price) || 0;
+        btn.textContent = willBeOff ? `Add · $${price.toLocaleString()}` : `Remove · $${price.toLocaleString()}`;
+        btn.classList.toggle('is-off', willBeOff);
+      }
+      recalcVivint();
+    };
+    // Run once on load so the slide-3 total + headline + slide-4 numbers
+    // reflect whatever the default toggle state is in the markup.
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', recalcVivint);
+    } else {
+      recalcVivint();
     }
 
   </script>
