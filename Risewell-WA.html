@@ -107,7 +107,7 @@
   <!-- Fireworks canvas overlay -->
   <canvas id="fireworksCanvas" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
 
-  <div class="version-badge" onclick="this.style.display='none'" title="Click to hide">v42.2-WA</div>
+  <div class="version-badge" onclick="this.style.display='none'" title="Click to hide">v42.3-WA</div>
 
   <!-- Progress bar -->
   <div class="fixed top-0 left-0 w-full h-1 bg-navy-100 z-50">
@@ -116,7 +116,7 @@
 
   <!-- ==================== SLIDE 1: OPENER ==================== -->
   <div class="slide active" data-slide="1">
-    <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in" style="background:#000;">
+    <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in bg-navy-700">
       <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-12 max-w-5xl">
         Cut Cost.<br>Simplify Operations.<br>Delight Homebuyers.
       </h1>
@@ -130,7 +130,7 @@
           </div>
         </div>
       </div>
-      <p class="font-bold tracking-widest uppercase mb-6" style="color:#38BDF8;font-size:0.95rem;letter-spacing:0.18em;">Why Risewell Wins:</p>
+      <p class="text-orange-400 font-bold tracking-widest uppercase mb-6" style="font-size:0.95rem;letter-spacing:0.18em;">Why Risewell Wins:</p>
       <ul class="space-y-3 text-left text-lg md:text-xl text-white font-bold">
         <li class="flex items-start gap-4"><span class="text-white" style="font-size:1.5rem;line-height:1.1;">&bull;</span><span>Save $250 per home</span></li>
         <li class="flex items-start gap-4"><span class="text-white" style="font-size:1.5rem;line-height:1.1;">&bull;</span><span>Consolidate to 1 partner</span></li>
@@ -224,61 +224,77 @@
     </div>
   </div>
 
-  <!-- ==================== SLIDE 4: AT SCALE — SCALE THE SAVINGS ==================== -->
+  <!-- ==================== SLIDE 4: AT SCALE — ALL 3 DIVISIONS ==================== -->
   <div class="slide" data-slide="4">
-    <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in bg-navy-700">
-      <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-6">At Scale</p>
-      <h2 class="text-4xl md:text-6xl font-bold mb-8 text-white">What <span data-per-home-title>$250</span>/home looks like<br>across your communities</h2>
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-6xl mb-6 w-full">
+    <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 py-10 text-center fade-in bg-navy-700">
+      <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-3">At Risewell Scale</p>
+      <h2 class="text-3xl md:text-5xl font-bold mb-2 text-white leading-tight">What <span data-per-home-title>$250</span>/home looks like<br>across all three divisions</h2>
+      <p class="text-sm text-navy-200 mb-6">3,874 homes across 27 communities &middot; WA + OR + CO</p>
+
+      <!-- HERO: All-divisions grand total -->
+      <div class="bg-gradient-to-b from-orange-400/25 to-navy-800 rounded-2xl px-10 py-6 border border-orange-400/40 mb-5 max-w-2xl w-full text-center">
+        <p class="text-navy-200 text-xs uppercase tracking-widest mb-2">Risewell All-Divisions Total</p>
+        <p class="text-6xl md:text-7xl font-black text-orange-400 leading-none" data-homes-savings data-homes="3874">$968,500</p>
+        <p class="text-orange-400 text-sm font-semibold mt-2">in first-year savings</p>
+      </div>
+
+      <!-- 3 DIVISION TOTALS (second-most prominent) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl w-full mb-6">
         <div class="bg-navy-800 rounded-2xl p-5 border border-navy-600 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Twin Trails</p>
-          <p class="text-navy-400 text-xs mb-3">Issaquah</p>
-          <p class="text-sm text-navy-200 mb-1">38 homes</p>
-          <p class="text-2xl font-black text-orange-400" data-community-savings data-homes="38">$9,500</p>
+          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Washington</p>
+          <p class="text-3xl font-black text-orange-400" data-homes-savings data-homes="1395">$348,750</p>
+          <p class="text-navy-400 text-xs mt-2">1,395 homes &middot; 5 communities</p>
         </div>
         <div class="bg-navy-800 rounded-2xl p-5 border border-navy-600 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Liberty View</p>
-          <p class="text-navy-400 text-xs mb-3">Bothell</p>
-          <p class="text-sm text-navy-200 mb-1">23 homes</p>
-          <p class="text-2xl font-black text-orange-400" data-community-savings data-homes="23">$5,750</p>
+          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Oregon</p>
+          <p class="text-3xl font-black text-orange-400" data-homes-savings data-homes="576">$144,000</p>
+          <p class="text-navy-400 text-xs mt-2">576 homes &middot; 4 communities</p>
         </div>
         <div class="bg-navy-800 rounded-2xl p-5 border border-navy-600 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Cedar Estates</p>
-          <p class="text-navy-400 text-xs mb-3">Bonney Lake</p>
-          <p class="text-sm text-navy-200 mb-1">12 homes</p>
-          <p class="text-2xl font-black text-orange-400" data-community-savings data-homes="12">$3,000</p>
-        </div>
-        <div class="bg-navy-800 rounded-2xl p-5 border border-navy-600 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Summit View</p>
-          <p class="text-navy-400 text-xs mb-3">Enumclaw</p>
-          <p class="text-sm text-navy-200 mb-1">22 homes</p>
-          <p class="text-2xl font-black text-orange-400" data-community-savings data-homes="22">$5,500</p>
-        </div>
-        <div class="bg-navy-800 rounded-2xl p-5 border border-orange-400/20 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Pine Ranch</p>
-          <p class="text-navy-400 text-xs mb-3">Cle Elum</p>
-          <p class="text-sm text-navy-200 mb-1">1,300 homes</p>
-          <p class="text-2xl font-black text-orange-400" data-community-savings data-homes="1300">$325,000</p>
+          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Colorado</p>
+          <p class="text-3xl font-black text-orange-400" data-homes-savings data-homes="1903">$475,750</p>
+          <p class="text-navy-400 text-xs mt-2">1,903 homes &middot; 18 communities</p>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl w-full mb-6">
-        <div class="bg-navy-800 rounded-2xl p-6 border border-navy-600 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Washington Total</p>
-          <p class="text-sm text-navy-200 mb-1">1,395 homes across 5 communities</p>
-          <p class="text-3xl font-black text-orange-400" data-wa-total data-homes="1395">$348,750</p>
-          <p class="text-navy-400 text-sm mt-1">in savings</p>
-        </div>
-        <div class="bg-gradient-to-b from-orange-400/20 to-navy-800 rounded-2xl p-6 border border-orange-400/30 text-center">
-          <p class="text-navy-300 text-xs uppercase tracking-widest mb-2">Risewell National</p>
-          <p class="text-sm text-navy-200 mb-1">~4,000 homes/year</p>
-          <p class="text-3xl font-black text-orange-400" data-national-total data-homes="4000">$1.00M</p>
-          <p class="text-orange-400 text-sm mt-1 font-semibold">per year in savings</p>
-        </div>
+
+      <!-- PER COMMUNITY · ANNUAL -->
+      <p class="text-navy-300 text-[11px] font-bold tracking-widest uppercase mb-3">Per Community &middot; Annual</p>
+      <div class="grid grid-cols-3 md:grid-cols-6 gap-2 max-w-6xl w-full">
+        <!-- WA (5) -->
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Twin Trails</p><p class="text-navy-400 text-[10px] mb-1">Issaquah, WA</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="38">$9,500</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Liberty View</p><p class="text-navy-400 text-[10px] mb-1">Bothell, WA</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="23">$5,750</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Cedar Estates</p><p class="text-navy-400 text-[10px] mb-1">Bonney Lake, WA</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="12">$3,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Summit View</p><p class="text-navy-400 text-[10px] mb-1">Enumclaw, WA</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="22">$5,500</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Pine Ranch</p><p class="text-navy-400 text-[10px] mb-1">Cle Elum, WA</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="1300">$325,000</p></div>
+        <!-- OR (4) -->
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">The Vineyard</p><p class="text-navy-400 text-[10px] mb-1">Beaverton, OR</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="143">$35,750</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Axiom</p><p class="text-navy-400 text-[10px] mb-1">Tigard, OR</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="192">$48,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Elevon</p><p class="text-navy-400 text-[10px] mb-1">Beaverton, OR</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="150">$37,500</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Kingston Terrace</p><p class="text-navy-400 text-[10px] mb-1">King City, OR</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="91">$22,750</p></div>
+        <!-- CO (18) -->
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Talon Pointe</p><p class="text-navy-400 text-[10px] mb-1">Thornton, CO</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="352">$88,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Cordovan</p><p class="text-navy-400 text-[10px] mb-1">Firestone, CO</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="132">$33,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Windler</p><p class="text-navy-400 text-[10px] mb-1">Aurora, CO</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="110">$27,500</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Manors at Golden Overlook</p><p class="text-navy-400 text-[10px] mb-1">Golden, CO</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="92">$23,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">The Aurora Highlands</p><p class="text-navy-400 text-[10px] mb-1">Aurora, CO</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="176">$44,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Pintail Commons</p><p class="text-navy-400 text-[10px] mb-1">Johnstown, CO</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="160">$40,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">The Casitas Collection</p><p class="text-navy-400 text-[10px] mb-1">Aurora, CO</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="110">$27,500</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Parkway at Prairie Center</p><p class="text-navy-400 text-[10px] mb-1">Brighton, CO</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="77">$19,250</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Highland Preserve</p><p class="text-navy-400 text-[10px] mb-1">Mead, CO</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="51">$12,750</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Spring Valley</p><p class="text-navy-400 text-[10px] mb-1">Longmont, CO</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="28">$7,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Cherry Meadows</p><p class="text-navy-400 text-[10px] mb-1">Colorado</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="12">$3,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">The Villas Collection</p><p class="text-navy-400 text-[10px] mb-1">Littleton, CO</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="3">$750</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">The Cottages Collection</p><p class="text-navy-400 text-[10px] mb-1">Colorado</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="100">$25,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">The Estates Collection</p><p class="text-navy-400 text-[10px] mb-1">Colorado</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="100">$25,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">The Garden Collection</p><p class="text-navy-400 text-[10px] mb-1">Colorado</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="100">$25,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Woodrose</p><p class="text-navy-400 text-[10px] mb-1">Colorado</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="100">$25,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Harvest</p><p class="text-navy-400 text-[10px] mb-1">Colorado</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="100">$25,000</p></div>
+        <div class="bg-navy-800 rounded-lg p-2.5 border border-navy-600 text-center"><p class="text-navy-300 text-[10px] uppercase tracking-widest mb-0.5">Mead</p><p class="text-navy-400 text-[10px] mb-1">Mead, CO</p><p class="text-base font-black text-orange-400" data-homes-savings data-homes="100">$25,000</p></div>
       </div>
     </div>
   </div>
 
-  <!-- ==================== SLIDE 4: WHAT YOU HAVE TODAY ==================== -->
+  <!-- ==================== SLIDE 5: WHAT YOU HAVE TODAY ==================== -->
   <div class="slide" data-slide="5">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
       <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-4">Today's Reality</p>
@@ -971,7 +987,6 @@
     function _fmtUSD(n) { return '$' + Math.round(n).toLocaleString(); }
     function _scaleFmt(n) {
       if (n >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
-      if (n >= 1e4) return '$' + Math.round(n / 1000).toLocaleString() + ',000';
       return '$' + Math.round(n).toLocaleString();
     }
     function recalcVivint() {
@@ -990,24 +1005,16 @@
         if (savings >= 0) headline.textContent = `Save ${_fmtUSD(savings)} per home`;
         else headline.textContent = `Adds ${_fmtUSD(-savings)} per home`;
       }
-      // Propagate to At Scale (slide 4) — only when savings positive; otherwise blank to $0
+      // Propagate to At Scale (slide 4) — covers all three divisions, the
+      // grand total, and the 27 per-community cards. Each uses a single
+      // [data-homes-savings] attribute paired with [data-homes].
       const perHome = Math.max(0, savings);
       const titleEl = document.querySelector('[data-per-home-title]');
       if (titleEl) titleEl.textContent = _fmtUSD(perHome);
-      document.querySelectorAll('[data-community-savings]').forEach(el => {
+      document.querySelectorAll('[data-homes-savings]').forEach(el => {
         const homes = parseInt(el.dataset.homes, 10) || 0;
         el.textContent = _scaleFmt(homes * perHome);
       });
-      const waEl = document.querySelector('[data-wa-total]');
-      if (waEl) {
-        const homes = parseInt(waEl.dataset.homes, 10) || 0;
-        waEl.textContent = _scaleFmt(homes * perHome);
-      }
-      const natEl = document.querySelector('[data-national-total]');
-      if (natEl) {
-        const homes = parseInt(natEl.dataset.homes, 10) || 0;
-        natEl.textContent = _scaleFmt(homes * perHome);
-      }
     }
     window.toggleVivint = function (product) {
       const row = document.querySelector(`[data-vivint-row][data-product="${product}"]`);
