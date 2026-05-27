@@ -107,7 +107,7 @@
   <!-- Fireworks canvas overlay -->
   <canvas id="fireworksCanvas" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;"></canvas>
 
-  <div class="version-badge" onclick="this.style.display='none'" title="Click to hide">v42.3-WA</div>
+  <div class="version-badge" onclick="this.style.display='none'" title="Click to hide">v42.4-WA</div>
 
   <!-- Progress bar -->
   <div class="fixed top-0 left-0 w-full h-1 bg-navy-100 z-50">
@@ -1005,15 +1005,19 @@
         if (savings >= 0) headline.textContent = `Save ${_fmtUSD(savings)} per home`;
         else headline.textContent = `Adds ${_fmtUSD(-savings)} per home`;
       }
-      // Propagate to At Scale (slide 4) — covers all three divisions, the
-      // grand total, and the 27 per-community cards. Each uses a single
-      // [data-homes-savings] attribute paired with [data-homes].
-      const perHome = Math.max(0, savings);
+      // Slide 4 (At Scale) is intentionally pinned to the canonical
+      // $250/home savings number — independent of the slide-3 toggles.
+      // The toggle prices on slide 3 don't yet net to a $250 savings in
+      // any combination, so coupling slide 4 to the live total would
+      // show $0 (negative savings get clamped). Once the toggle prices
+      // are tuned, swap RISEWELL_PER_HOME for `Math.max(0, savings)` to
+      // re-couple.
+      const RISEWELL_PER_HOME = 250;
       const titleEl = document.querySelector('[data-per-home-title]');
-      if (titleEl) titleEl.textContent = _fmtUSD(perHome);
+      if (titleEl) titleEl.textContent = _fmtUSD(RISEWELL_PER_HOME);
       document.querySelectorAll('[data-homes-savings]').forEach(el => {
         const homes = parseInt(el.dataset.homes, 10) || 0;
-        el.textContent = _scaleFmt(homes * perHome);
+        el.textContent = _scaleFmt(homes * RISEWELL_PER_HOME);
       });
     }
     window.toggleVivint = function (product) {
