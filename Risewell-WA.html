@@ -81,6 +81,26 @@
     .browser-bar { background: #f3f4f6; padding: 10px 16px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #e5e7eb; }
     .browser-dot { width: 10px; height: 10px; border-radius: 50%; }
     .browser-url { background: white; border: 1px solid #e5e7eb; border-radius: 6px; padding: 4px 12px; font-size: 12px; color: #6b7280; flex: 1; margin-left: 8px; }
+    /* Built to Evolve cards (slide 8) */
+    .ai-card { background: white; border-radius: 12px; border: 1px solid #e5e7eb; box-shadow: 0 4px 16px rgba(0,0,0,0.04); padding: 12px 14px 14px; display: flex; flex-direction: column; gap: 8px; }
+    .ai-thumb { position: relative; width: 100%; aspect-ratio: 16/7; background: linear-gradient(135deg, #003B5C 0%, #E87722 200%); border-radius: 8px; overflow: hidden; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .ai-thumb > img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.95); transition: filter 0.25s, transform 0.25s; }
+    .ai-thumb:hover > img { filter: brightness(1.06); transform: scale(1.06); }
+    .ai-thumb .play-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: transparent; transition: background 0.2s; pointer-events: none; }
+    .ai-thumb:hover .play-overlay { background: rgba(232,119,34,0.18); }
+    .ai-thumb .play-icon { width: 64px; height: 64px; border-radius: 50%; background: transparent; border: 3px solid rgba(255,255,255,0.9); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 16px rgba(0,0,0,0.30); transition: transform 0.25s, border-color 0.25s, background 0.25s; }
+    .ai-thumb .play-icon svg { width: 26px; height: 26px; fill: white; margin-left: 4px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.45)); }
+    .ai-thumb:hover .play-icon { transform: scale(1.08); background: rgba(232,119,34,0.25); border-color: white; }
+    .ai-card-title { font-size: 16px; font-weight: 700; color: #003B5C; line-height: 1.2; margin: 0; }
+    .ai-card-sub   { font-size: 11px; color: #E87722; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin: 0 0 -4px 0; }
+    .ai-card-bullets { margin: 0; padding: 0; list-style: none; font-size: 12px; color: #4b5563; line-height: 1.45; }
+    .ai-card-bullets li { padding-left: 12px; position: relative; margin-bottom: 2px; }
+    .ai-card-bullets li::before { content: ""; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; border-radius: 50%; background: #E87722; }
+    .ai-video-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 1000; }
+    .ai-video-modal.open { display: flex; }
+    .ai-video-modal-inner { width: min(90vw, 1100px); aspect-ratio: 16/9; background: black; border-radius: 12px; overflow: hidden; position: relative; }
+    .ai-video-modal-inner video, .ai-video-modal-inner iframe { width: 100%; height: 100%; border: 0; display: block; }
+    .ai-video-close { position: absolute; top: -12px; right: -12px; width: 40px; height: 40px; border-radius: 50%; background: white; color: #003B5C; border: 0; cursor: pointer; font-size: 18px; font-weight: 700; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
     /* Vivint product toggle buttons (slide 3 — Customize) */
     .vivint-toggle-btn { font-size: 11px; font-weight: 600; padding: 5px 11px; border-radius: 999px; border: 1px solid #003B5C; background: #003B5C; color: #fff; cursor: pointer; transition: all 0.15s ease; letter-spacing: 0.02em; white-space: nowrap; }
     .vivint-toggle-btn:hover { opacity: 0.85; }
@@ -103,7 +123,7 @@
 
   <!-- Version badge -->
 
-  <div class="version-badge" onclick="this.style.display='none'" title="Click to hide">v42.7-WA</div>
+  <div class="version-badge" onclick="this.style.display='none'" title="Click to hide">v42.8-WA</div>
 
   <!-- Progress bar -->
   <div class="fixed top-0 left-0 w-full h-1 bg-navy-100 z-50">
@@ -449,128 +469,71 @@
     </div>
   </div>
 
-  <!-- ==================== SLIDE 8: PRODUCT COMPARISON - DOORBELL ==================== -->
+  <!-- ==================== SLIDE 8: BUILT TO EVOLVE — DEAKO AI ==================== -->
   <div class="slide" data-slide="8">
-    <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in py-6">
-      <p class="text-navy-400 font-semibold text-sm tracking-widest uppercase mb-3">Side-by-Side Comparison</p>
-      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-navy-700">Doorbell Camera</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
-        <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm cost-current">
-          <p class="text-orange-400 font-bold text-sm tracking-widest uppercase mb-4">Current</p>
-          <div class="h-48 flex items-center justify-center mb-6 bg-gray-50 rounded-xl p-4">
-            <img src="images/ring-pro2.jpg" alt="Ring Pro2" class="product-img-lg" onerror="this.parentElement.innerHTML='<div class=\'text-5xl\'>🔔</div>'">
+    <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 py-4 fade-in">
+      <p class="text-orange-400 font-semibold text-xs tracking-widest uppercase mb-2 text-center">What's Next</p>
+      <h2 class="text-2xl md:text-4xl font-bold mb-2 leading-tight text-navy-700 text-center max-w-5xl">Built to Evolve. Built to Differentiate.</h2>
+      <p class="text-sm md:text-base text-gray-600 max-w-3xl text-center mb-4 leading-snug">Buyer expectations move fast. Deako Connectors let your homes adopt new capabilities without rewiring &mdash; and the Intelligent home is the next leap.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-5xl w-full">
+        <div class="ai-card">
+          <div class="ai-thumb" onclick="playDeakoVideo('lighting')">
+            <img src="images/deako-ai-lighting.jpg" alt="Adaptive Lighting demo">
+            <div class="play-overlay"><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
           </div>
-          <p class="text-2xl font-bold text-navy-700">Ring Video Doorbell Pro 2</p>
-          <p class="text-gray-400 text-sm mt-2 mb-4">Model: Ring Pro 2 (Wired)</p>
-          <div class="bg-gray-50 rounded-xl p-4 text-left space-y-2">
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Dimensions:</span> 4.49" x <span class="font-bold text-navy-700">1.90"</span> x 0.87"</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Resolution:</span> 1536 x 1536</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">FOV:</span> 150° x 150°</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">App:</span> Ring app</p>
-          </div>
-          <p class="text-orange-400 text-3xl font-bold mt-6">$275</p>
+          <p class="ai-card-sub">Adaptive Lighting</p>
+          <h3 class="ai-card-title">More than just motion sensing</h3>
+          <ul class="ai-card-bullets">
+            <li>Lights your path automatically &mdash; on when you arrive, off when you leave</li>
+            <li>Learns your routines and gets smarter over time</li>
+            <li>Adjusts color to support energy, focus, and sleep</li>
+          </ul>
         </div>
-        <div class="bg-white rounded-2xl p-8 border border-navy-200 shadow-sm cost-new">
-          <p class="text-navy-700 font-bold text-sm tracking-widest uppercase mb-4">Deako + Vivint</p>
-          <div class="h-48 flex items-center justify-center mb-6 bg-gray-50 rounded-xl p-4">
-            <img src="images/vivint-doorbell-orange-ring.png" alt="Vivint Doorbell" class="product-img-lg" style="width:auto;max-height:115px;max-width:40%;" onerror="this.parentElement.innerHTML='<div class=\'text-5xl\'>🔔</div>'"">
+        <div class="ai-card">
+          <div class="ai-thumb" onclick="playDeakoVideo('sound')">
+            <img src="images/deako-ai-sound.jpg" alt="Follow-Me Sound demo">
+            <div class="play-overlay"><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
           </div>
-          <p class="text-2xl font-bold text-navy-700">Vivint Doorbell Camera Pro</p>
-          <p class="text-gray-400 text-sm mt-2 mb-4">Model: VS-DBC350-WHT (Gen 2)</p>
-          <div class="bg-gray-50 rounded-xl p-4 text-left space-y-2">
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Dimensions:</span> 4.6" x 1.5" x 1.3"</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Resolution:</span> 1920 x 1080</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">FOV:</span> 180° x 180°</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">App:</span> Vivint app</p>
+          <p class="ai-card-sub">Follow-Me Sound</p>
+          <h3 class="ai-card-title">Music that moves with you</h3>
+          <ul class="ai-card-bullets">
+            <li>Audio follows you from room to room</li>
+            <li>Adapts to multiple people and volume preferences</li>
+            <li>Turns existing speakers into one connected system</li>
+          </ul>
+        </div>
+        <div class="ai-card">
+          <div class="ai-thumb" onclick="playDeakoVideo('intercom')">
+            <img src="images/deako-ai-intercom.jpg" alt="Intercom demo">
+            <div class="play-overlay"><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
           </div>
-          <p class="text-orange-400 text-3xl font-bold mt-6">Included</p>
+          <p class="ai-card-sub">Intercom</p>
+          <h3 class="ai-card-title">Talk to every room from any room</h3>
+          <ul class="ai-card-bullets">
+            <li>Routes voice to occupied rooms &mdash; no more yelling</li>
+            <li>Built-in speaker and mic for two-way communication</li>
+            <li>Auto-adjusts volume to ambient noise</li>
+          </ul>
+        </div>
+        <div class="ai-card">
+          <div class="ai-thumb" onclick="playDeakoVideo('care')">
+            <img src="images/deako-ai-care.jpg" alt="Parent Care demo">
+            <div class="play-overlay"><div class="play-icon"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+          </div>
+          <p class="ai-card-sub">Parent Care</p>
+          <h3 class="ai-card-title">Know they're ok without calling every day</h3>
+          <ul class="ai-card-bullets">
+            <li>No cameras or wearables &mdash; protects independence and dignity</li>
+            <li>Radar monitors activity and learns routines over time</li>
+            <li>Check in or get alerts via the Intercom Switch</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ==================== SLIDE 6: PRODUCT COMPARISON - LOCK ==================== -->
+  <!-- ==================== SLIDE 9: WHITE GLOVE EXPERIENCE ==================== -->
   <div class="slide" data-slide="9">
-    <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
-      <p class="text-navy-400 font-semibold text-sm tracking-widest uppercase mb-3">Side-by-Side Comparison</p>
-      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-navy-700">Smart Lock</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
-        <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm cost-current">
-          <p class="text-orange-400 font-bold text-sm tracking-widest uppercase mb-4">Current</p>
-          <div class="h-48 flex items-center justify-center mb-6 bg-gray-50 rounded-xl p-4">
-            <img src="images/kwikset-939.jpg" alt="Kwikset 939" class="product-img-lg" onerror="this.parentElement.innerHTML='<div class=\'text-5xl\'>🔒</div>'">
-          </div>
-          <p class="text-2xl font-bold text-navy-700">Kwikset 939 Halo</p>
-          <p class="text-gray-400 text-sm mt-2 mb-4">Model: 939 WIFI TSCR 15</p>
-          <div class="bg-gray-50 rounded-xl p-4 text-left space-y-2">
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Dimensions:</span> 5.6" x 2.8" x 1.2"</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Codes:</span> Up to 250</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Connect:</span> Wi-Fi (no hub)</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">App:</span> Kwikset app</p>
-          </div>
-          <p class="text-orange-400 text-3xl font-bold mt-6">$200</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 border border-navy-200 shadow-sm cost-new">
-          <p class="text-navy-700 font-bold text-sm tracking-widest uppercase mb-4">Deako + Vivint</p>
-          <div class="h-48 flex items-center justify-center mb-6 bg-gray-50 rounded-xl p-4">
-            <img src="images/kwikset-halo-black.png" alt="Vivint Lock" class="product-img-lg" style="height:200px;width:auto;" onerror="this.parentElement.innerHTML='<div class=\'text-5xl\'>🔒</div>'">
-          </div>
-          <p class="text-2xl font-bold text-navy-700">Vivint Smart Lock</p>
-          <p class="text-gray-400 text-sm mt-2 mb-4">Model: Kwikset 888 SmartCode (Z-Wave)</p>
-          <div class="bg-gray-50 rounded-xl p-4 text-left space-y-2">
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Dimensions:</span> 4.59" x 2.66" x 1.19"</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Codes:</span> Up to 30</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Connect:</span> Z-Wave (via panel)</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">App:</span> Vivint app</p>
-          </div>
-          <p class="text-orange-400 text-3xl font-bold mt-6">Included</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== SLIDE 7: PRODUCT COMPARISON - THERMOSTAT ==================== -->
-  <div class="slide" data-slide="10">
-    <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
-      <p class="text-navy-400 font-semibold text-sm tracking-widest uppercase mb-3">Side-by-Side Comparison</p>
-      <h2 class="text-4xl md:text-5xl font-bold mb-6 text-navy-700">Smart Thermostat</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
-        <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm cost-current">
-          <p class="text-orange-400 font-bold text-sm tracking-widest uppercase mb-4">Current</p>
-          <div class="h-48 flex items-center justify-center mb-6 bg-gray-50 rounded-xl p-4">
-            <img src="images/honeywell-t6.jpg" alt="Honeywell T6" class="product-img-lg" onerror="this.parentElement.innerHTML='<div class=\'text-5xl\'>🌡️</div>'">
-          </div>
-          <p class="text-2xl font-bold text-navy-700">Honeywell T6 Pro</p>
-          <p class="text-gray-400 text-sm mt-2 mb-4">Model: TH6220WF2006</p>
-          <div class="bg-gray-50 rounded-xl p-4 text-left space-y-2">
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Dimensions:</span> 4.06" x 4.06" x 1.16"</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Display:</span> 6.89 sq in touchscreen</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Power:</span> 24VAC (C-wire)</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">App:</span> Honeywell app</p>
-          </div>
-          <p class="text-orange-400 text-3xl font-bold mt-6">$115</p>
-        </div>
-        <div class="bg-white rounded-2xl p-8 border border-navy-200 shadow-sm cost-new">
-          <p class="text-navy-700 font-bold text-sm tracking-widest uppercase mb-4">Deako + Vivint</p>
-          <div class="h-48 flex items-center justify-center mb-6 bg-gray-50 rounded-xl p-4">
-            <img src="images/vivint-thermostat-front.jpg" alt="Vivint Element" class="product-img-lg" onerror="this.parentElement.innerHTML='<div class=\'text-5xl\'>🌡️</div>'">
-          </div>
-          <p class="text-2xl font-bold text-navy-700">Vivint Element Thermostat</p>
-          <p class="text-gray-400 text-sm mt-2 mb-4">Model: V-SCT200</p>
-          <div class="bg-gray-50 rounded-xl p-4 text-left space-y-2">
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Dimensions:</span> 4.5" x 4.5" x 0.94"</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Display:</span> 3.5" color touchscreen</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">Power:</span> 4 AA or 24VAC</p>
-            <p class="text-gray-600"><span class="text-gray-400 w-24 inline-block">App:</span> Vivint app</p>
-          </div>
-          <p class="text-orange-400 text-3xl font-bold mt-6">Included</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==================== SLIDE 11: WHITE GLOVE EXPERIENCE ==================== -->
-  <div class="slide" data-slide="11">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
       <p class="text-navy-400 font-semibold text-sm tracking-widest uppercase mb-6">The Homebuyer Experience</p>
       <h2 class="text-4xl md:text-6xl font-bold mb-12 text-navy-700">White glove from<br>close to connected</h2>
@@ -614,7 +577,7 @@
   </div>
 
   <!-- ==================== SLIDE 12: MOCKUP - RISEWELL.COM/SMARTHOME ==================== -->
-  <div class="slide" data-slide="12">
+  <div class="slide" data-slide="10">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-6 fade-in">
       <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-4">Vision: What Your Homebuyers See</p>
       <h2 class="text-3xl md:text-4xl font-bold mb-6 text-navy-700">risewellhomes.com/smarthome</h2>
@@ -700,7 +663,7 @@
 
   <!-- ==================== SLIDE 17: NEXT STEPS ==================== -->
   <!-- ==================== SLIDE 16: WHY SWITCH - SUMMARY ==================== -->
-  <div class="slide" data-slide="13">
+  <div class="slide" data-slide="11">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in py-6">
       <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-3 mt-8">The Case for Change</p>
       <h2 class="text-4xl md:text-5xl font-bold mb-6 text-navy-700">Why make the switch?</h2>
@@ -735,6 +698,13 @@
         <p class="text-base text-white font-bold">Derek Richardson &middot; CEO, Deako</p>
         <p class="text-orange-400 font-semibold text-sm mt-1">dxr@deako.com &nbsp;&middot;&nbsp; (408) 410-4448</p>
       </div>
+    </div>
+  </div>
+
+  <!-- Video modal for Built-to-Evolve cards (slide 8) -->
+  <div class="ai-video-modal" id="aiVideoModal" onclick="closeDeakoVideo(event)">
+    <div class="ai-video-modal-inner" id="aiVideoModalInner" onclick="event.stopPropagation()">
+      <button class="ai-video-close" onclick="closeDeakoVideo()">&times;</button>
     </div>
   </div>
 
@@ -774,6 +744,46 @@
     });
 
     showSlide(1);
+
+    // ===== Slide 8 — Deako AI capability video player =====
+    const DEAKO_AI_VIDEOS = {
+      lighting: 'https://www.youtube.com/embed/l467F0bxISA?autoplay=1&rel=0',
+      sound:    'https://www.youtube.com/embed/TtWb2-dWRxI?autoplay=1&rel=0',
+      intercom: 'https://www.youtube.com/embed/wrpnolHtfww?autoplay=1&rel=0',
+      care:     'https://www.youtube.com/embed/9E0Jrl3unLg?autoplay=1&rel=0',
+    };
+    function playDeakoVideo(key) {
+      const url = DEAKO_AI_VIDEOS[key];
+      const inner = document.getElementById('aiVideoModalInner');
+      const modal = document.getElementById('aiVideoModal');
+      if (!inner || !modal) return;
+      inner.querySelectorAll('video, iframe').forEach(n => n.remove());
+      if (!url) return;
+      const isFile = /\.(mp4|webm|mov)(\?|$)/i.test(url);
+      let el;
+      if (isFile) {
+        el = document.createElement('video');
+        el.src = url; el.controls = true; el.autoplay = true;
+      } else {
+        el = document.createElement('iframe');
+        el.src = url;
+        el.allow = 'autoplay; fullscreen; encrypted-media';
+        el.allowFullscreen = true;
+      }
+      inner.appendChild(el);
+      modal.classList.add('open');
+    }
+    function closeDeakoVideo(evt) {
+      if (evt && evt.target && evt.target.id !== 'aiVideoModal' && !evt.target.classList.contains('ai-video-close')) return;
+      const modal = document.getElementById('aiVideoModal');
+      const inner = document.getElementById('aiVideoModalInner');
+      if (!modal || !inner) return;
+      modal.classList.remove('open');
+      inner.querySelectorAll('video, iframe').forEach(n => n.remove());
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeDeakoVideo({ target: document.getElementById('aiVideoModal') });
+    });
 
     // ===== Slide 3 + Slide 4 — Vivint product toggles → live recalc =====
     // Each toggle adds its listed wholesale price to the Vivint-side total
