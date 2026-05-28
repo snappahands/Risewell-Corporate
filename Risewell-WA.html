@@ -106,6 +106,37 @@
     .vivint-toggle-btn:hover { opacity: 0.85; }
     .vivint-toggle-btn.is-off { background: rgba(232,119,34,0.10); color: #E87722; border-color: rgba(232,119,34,0.45); }
     [data-vivint-row].is-off .text-gray-500 { color: #b5bcc4 !important; text-decoration: line-through; }
+
+    /* ===== Mobile optimizations (phones) ===== */
+    @media (max-width: 640px) {
+      /* Tighter side gutters on phones — slide wrapper is the .px-8 child of .slide */
+      .slide > div.px-8 { padding-left: 1rem !important; padding-right: 1rem !important; }
+      /* Reduce vertical padding/margins so more fits in 100vh */
+      .slide h2.text-6xl { font-size: 2.25rem; line-height: 1.1; }
+      .slide h2.text-5xl { font-size: 2rem; line-height: 1.15; }
+      .slide h2.text-4xl { font-size: 1.6rem; line-height: 1.2; }
+      /* Slide 2: shrink product card padding so both stack with breathing room */
+      .slide[data-slide="2"] .rounded-2xl.p-8 { padding: 1.25rem; }
+      /* Slide 3: hero number sized down + tighter card grids */
+      .slide[data-slide="3"] .text-7xl,
+      .slide[data-slide="3"] .text-6xl { font-size: 2.5rem; line-height: 1; }
+      .slide[data-slide="3"] .text-3xl { font-size: 1.4rem; }
+      .slide[data-slide="3"] .grid.grid-cols-3.md\:grid-cols-6 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.4rem; }
+      .slide[data-slide="3"] .rounded-lg.p-2\.5 { padding: 0.45rem; }
+      .slide[data-slide="3"] .text-base { font-size: 0.85rem; }
+      /* Slide 9 (Why Switch) — let bullet rows wrap, smaller text */
+      .slide[data-slide="9"] .whitespace-nowrap { white-space: normal; }
+      .slide[data-slide="9"] p.text-lg { font-size: 0.95rem; line-height: 1.35; }
+      .slide[data-slide="9"] .icon-sm { width: 32px; height: 32px; font-size: 14px; }
+      .slide[data-slide="9"] .gap-5 { gap: 0.75rem; }
+      .slide[data-slide="9"] .p-4 { padding: 0.75rem; }
+      .slide[data-slide="9"] .space-y-3 > * + * { margin-top: 0.5rem; }
+      /* Nav pill: smaller on phones so it doesn't crowd the slide */
+      body > div[style*="position:fixed"][style*="top:16px"] { top: 8px !important; right: 8px !important; padding: 4px 10px !important; }
+      /* Feedback/edit buttons: tuck out of the way */
+      .feedback-btn, .edit-btn { width: 32px !important; height: 32px !important; font-size: 14px !important; }
+      .version-badge { font-size: 9px; padding: 2px 6px; }
+    }
   </style>
 </head>
 <body class="bg-white text-navy-900 overflow-hidden">
@@ -123,7 +154,7 @@
 
   <!-- Version badge -->
 
-  <div class="version-badge" onclick="this.style.display='none'" title="Click to hide">v43.3-WA</div>
+  <div class="version-badge" onclick="this.style.display='none'" title="Click to hide">v43.4-WA</div>
 
   <!-- Progress bar -->
   <div class="fixed top-0 left-0 w-full h-1 bg-navy-100 z-50">
@@ -158,8 +189,9 @@
   <!-- ==================== SLIDE 2: CUSTOMIZE ==================== -->
   <div class="slide" data-slide="2">
     <div class="flex flex-col items-center justify-center min-h-screen w-full px-8 text-center fade-in">
-      <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-6">Customize Your Package</p>
-      <h2 class="text-4xl md:text-6xl font-bold mb-10 text-navy-700">Tap to add or remove products.</h2>
+      <p class="text-orange-400 font-semibold text-sm tracking-widest uppercase mb-3">Customize Your Package</p>
+      <h2 class="text-4xl md:text-6xl font-bold mb-2 text-navy-700">More product for less cost.</h2>
+      <p class="text-base md:text-lg text-gray-500 mb-8">Tap to add or remove products.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl w-full mb-10">
         <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm cost-current">
           <p class="text-orange-400 font-bold text-sm tracking-widest uppercase mb-6">Today</p>
@@ -542,7 +574,7 @@
       <div class="inline-flex flex-col space-y-3">
         <div class="flex items-center gap-5 bg-white rounded-xl p-4 border border-gray-200 shadow-sm">
           <div class="icon-sm bg-orange-100 text-orange-600 flex-shrink-0">$</div>
-          <p class="text-lg text-gray-600 text-left whitespace-nowrap"><span class="text-navy-700 font-bold">Save $250 per home</span> — more products at less cost than today</p>
+          <p class="text-lg text-gray-600 text-left whitespace-nowrap"><span class="text-navy-700 font-bold">Save <span data-savings-per-home>$360</span> per home</span> — more products at less cost than today</p>
         </div>
         <div class="flex items-center gap-5 bg-white rounded-xl p-4 border border-gray-200 shadow-sm">
           <div class="icon-sm bg-orange-100 text-orange-600 flex-shrink-0">🤝</div>
@@ -694,6 +726,10 @@
       document.querySelectorAll('[data-homes-savings]').forEach(el => {
         const homes = parseInt(el.dataset.homes, 10) || 0;
         el.textContent = _scaleFmt(homes * perHome);
+      });
+      // Slide 9 (Why Switch) — bullet 1 echoes live per-home savings
+      document.querySelectorAll('[data-savings-per-home]').forEach(el => {
+        el.textContent = _fmtUSD(perHome);
       });
     }
     window.toggleVivint = function (product) {
