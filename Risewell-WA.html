@@ -41,7 +41,7 @@
     .version-badge { position: fixed; bottom: 10px; left: 12px; z-index: 60; background: rgba(0,0,0,0.35); color: rgba(255,255,255,0.45); font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 6px; cursor: pointer; letter-spacing: 0.05em; transition: opacity 0.2s; user-select: none; }
     .version-badge:hover { opacity: 0.6; }
     /* Feedback panel */
-    .feedback-btn { position: fixed; bottom: 8px; right: 8px; z-index: 60; background: #003B5C; border: 1px solid #2d4a77; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #E87722; font-size: 18px; transition: all 0.2s; }
+    .feedback-btn { position: fixed; bottom: 8px; right: 8px; z-index: 60; background: #003B5C; border: 1px solid #2d4a77; border-radius: 50%; width: 40px; height: 40px; display: none; align-items: center; justify-content: center; cursor: pointer; color: #E87722; font-size: 18px; transition: all 0.2s; }
     .feedback-btn:hover { background: #2d4a77; }
     .feedback-panel { position: fixed; bottom: 56px; right: 8px; z-index: 60; width: 340px; max-height: 70vh; background: white; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; display: none; flex-direction: column; gap: 12px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); }
     .feedback-panel.open { display: flex; }
@@ -63,7 +63,7 @@
     .capture-btn:hover { background: #0e4d6e; }
     .capture-toast { position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%); background: rgba(0,59,92,0.95); color: white; padding: 24px 36px; border-radius: 12px; font-size: 18px; font-weight: 600; font-family: Montserrat; z-index: 201; text-align: center; box-shadow: 0 25px 50px rgba(0,0,0,0.3); animation: fadeIn 0.3s ease; }
     .capture-toast kbd { background: #0e4d6e; border: 1px solid #1a5f84; border-radius: 4px; padding: 2px 8px; font-size: 14px; }
-    .edit-btn { position: fixed; bottom: 8px; right: 56px; z-index: 60; background: #003B5C; border: 1px solid #0e4d6e; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #E87722; font-size: 18px; transition: all 0.2s; }
+    .edit-btn { position: fixed; bottom: 8px; right: 56px; z-index: 60; background: #003B5C; border: 1px solid #0e4d6e; border-radius: 50%; width: 40px; height: 40px; display: none; align-items: center; justify-content: center; cursor: pointer; color: #E87722; font-size: 18px; transition: all 0.2s; }
     .edit-btn:hover { background: #0e4d6e; }
     .edit-btn.active { background: #E87722; color: white; border-color: #d4651a; }
     body.edit-mode [contenteditable="true"] { outline: 2px dashed rgba(232,119,34,0.4); outline-offset: 2px; cursor: text; }
@@ -109,10 +109,22 @@
 
     /* ===== Mobile optimizations (phones) ===== */
     @media (max-width: 640px) {
-      /* Let each slide scroll its own content vertically when it exceeds the
-         viewport (slides 5 + 8 are tall on phones). Horizontal swipe nav is
-         X-delta only, so vertical scroll inside a slide doesn't fight nav. */
-      .slide.active { overflow-y: auto; -webkit-overflow-scrolling: touch; }
+      /* Constrain each slide to the viewport height and scroll its own
+         content vertically when it overflows. Without a hard max-height,
+         the slide just grows to fit content and never scrolls (body is
+         overflow:hidden). Horizontal swipe nav is X-delta only, so
+         in-slide vertical scrolling doesn't fight slide nav. */
+      .slide { min-height: 100dvh; }
+      .slide.active {
+        height: 100dvh;
+        max-height: 100dvh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+      }
+      /* When content is taller than the viewport, top-align it so the
+         first thing on the slide is visible without scrolling up. */
+      .slide.active > div { justify-content: flex-start; padding-top: 2.5rem; padding-bottom: 2.5rem; }
       /* Tighter side gutters on phones — slide wrapper is the .px-8 child of .slide */
       .slide > div.px-8 { padding-left: 1rem !important; padding-right: 1rem !important; }
       /* Slide 5 (Deako+Vivint Solution): shrink banner + product cards */
@@ -151,8 +163,6 @@
       .slide[data-slide="9"] .space-y-3 > * + * { margin-top: 0.5rem; }
       /* Nav pill: smaller on phones so it doesn't crowd the slide */
       body > div[style*="position:fixed"][style*="top:16px"] { top: 8px !important; right: 8px !important; padding: 4px 10px !important; }
-      /* Feedback/edit buttons: tuck out of the way */
-      .feedback-btn, .edit-btn { width: 32px !important; height: 32px !important; font-size: 14px !important; }
       .version-badge { font-size: 9px; padding: 2px 6px; }
     }
   </style>
@@ -172,7 +182,7 @@
 
   <!-- Version badge -->
 
-  <div class="version-badge" onclick="this.style.display='none'" title="Click to hide">v43.5-WA</div>
+  <div class="version-badge" onclick="this.style.display='none'" title="Click to hide">v43.6-WA</div>
 
   <!-- Progress bar -->
   <div class="fixed top-0 left-0 w-full h-1 bg-navy-100 z-50">
@@ -197,7 +207,7 @@
       </div>
       <p class="text-orange-400 font-bold tracking-widest uppercase mb-6" style="font-size:0.95rem;letter-spacing:0.18em;">Why Risewell Wins:</p>
       <ul class="space-y-3 text-left text-lg md:text-xl text-white font-bold">
-        <li class="flex items-start gap-4"><span class="text-white" style="font-size:1.5rem;line-height:1.1;">&bull;</span><span>Save $250 per home</span></li>
+        <li class="flex items-start gap-4"><span class="text-white" style="font-size:1.5rem;line-height:1.1;">&bull;</span><span>Save <span data-savings-per-home>$360</span> a home</span></li>
         <li class="flex items-start gap-4"><span class="text-white" style="font-size:1.5rem;line-height:1.1;">&bull;</span><span>Consolidate to 1 partner</span></li>
         <li class="flex items-start gap-4"><span class="text-white" style="font-size:1.5rem;line-height:1.1;">&bull;</span><span>Elevate homebuyer experience</span></li>
       </ul>
